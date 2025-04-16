@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ M&U</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+/* Search Bar */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Adjust as needed */
+}
+
+.search-input {
+    width: 300px; /* Adjust width as needed */
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    background-color: #333; /* Dark background */
+    color: #fff; /* White text */
+    font-size: 16px;
+    padding-left: 40px; /* Space for the icon */
+    margin-right: 450px;
+}
+
+.search-input::placeholder {
+    color: #bbb; /* Placeholder text color */
+}
+
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    color: #bbb; /* Icon color */
+    font-size: 20px;
+}
+
+header {
+    background-color: #1e1e1e;
+    padding: 10px 20px;
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 998;  /* Lower than sidebar but higher than other content */
+}
+ .header-left {
+            font-size: 24px;
+            color: white;
+            font-weight: bold; ;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+}
+
+/* Header Right */
+.header-right {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+nav a:hover {
+    color: #ff00ff;
+    
+}
+/* From Uiverse.io by cssbuttons-io 
+    NHỚ ĐỌC NHÉ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/ 
+    .button {
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(100, 61, 136);
+    border: .25em solid var(--glow-color);
+    padding: 1em 2em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 1em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+    text-shadow: 0 0 .5em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+   }
+   
+.button::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(2em);
+    opacity: .7;
+    transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+   }
+   
+.button:hover {
+     color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+           0 0 4em 2em var(--glow-spread-color),
+           inset 0 0 .75em .25em var(--glow-color);
+   }
+   
+.button:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+}
+.button1 {
+    background-color: #9400D3;
+    padding: 10px 20px;
+    color: black;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    margin: 0px 5px;
+    
+}
+
+.button2 {
+    background-color: #121212;
+    padding: 10px 20px;
+    color: rgb(51, 223, 242);
+    font-size: 18px;
+    border: 2px solid rgb(51, 223, 242);
+    cursor: pointer;
+    border-radius: 30px;
+    margin: 0px 5px;
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 40px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;  /* Highest z-index to always be clickable */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 260px;
+    height: 100vh;
+    background: #2d2d2d;
+    box-shadow: -5px 0 10px rgba(255, 0, 255, 0.5);
+    transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;  /* Higher than header */
+}
+
+.sidebar.open {
+    right: 0;
+}
+
+.sidebar-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff00ff;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+    background: linear-gradient(to right, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.logo span {
+    color: #00ffff;
+}
+
+.group-title {
+    color: #ff00ff;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 20px 5px 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar ul li {
+    margin: 5px 0;
+}
+.sidebar ul li{
+    position: relative;
+    height: 20px;
+    width: 100%;
+    margin: 0 5px;
+    list-style: none;
+    line-height: 50px;
+}
+
+.sidebar ul li a:hover {
+    background: rgba(255, 0, 255, 0.3);
+    color: #ff00ff;
+    box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.7);
+}
+
+.sidebar ul li a.blue {
+    color: #00ffff;
+}
+.sidebar ul li a.blue:hover {
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.7);
+}
+
+.sidebar ul li a.red {
+    color: #ff00ff;
+}
+.sidebar ul li a.red:hover {
+    background: rgba(255, 0, 255, 0.3);
+    box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.7);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 997;  /* Lower than header */
+}
+
+.overlay.show {
+    display: block;
+}
+</style>
+<header>
+    <div class="header-left">
+        <div class="logo">M&U</div>
+        <div class="search-container">
+            <input type="text" placeholder="Search For Musics, Artists, ..." class="search-input">
+            <i class="search-icon">&#128269;</i> <!-- Unicode for search icon -->
+        </div>
+    </div>
+    <div class="header-right">
+        <nav>
+            <a href="#"> About Us </a>
+            <a href="#">Contact</a>
+            <a href="prenium.html">Prenium</a>
+            <a href="dangnhap.php">Login</a>
+            <a href="dangky.html"><button class="button">Sign up</button></a>
+        </nav>
+    </div>
+</header>
+ <div class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+</div>
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-content">
+        <h1 class="logo">Me and <span>You</span></h1>
+        <ul>
+            <li class="group-title">Menu</li>
+            <li><a href="index.php" class="active"> Home</a></li>
+            <li><a href="#discover"> Discover</a></li>
+            <li><a href="albums.html"> Albums</a></li>
+            <li><a href="#"> Artists</a></li>
+            <li class="group-title">Library</li>
+            <li><a href="#"> Recently Added</a></li>
+            <li><a href="#"> Most Played</a></li>
+            <li class="group-title">Playlist and Favorite</li>
+            <li><a href="#"> <i class="fa fa-heart"></i> Your Favorites</a></li>
+            <li><a href="#"> Your Playlist</a></li>
+            <li><a href="#" class="blue"> Add Playlist</a></li>
+            <li class="group-title"> General</li>
+            <li><a href="#"> Settings</a></li>
+            <li><a href="#" class="red"> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.createElement("div");
+
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
+
+    menuToggle.addEventListener("click", function () {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("show");
+    });
+
+    overlay.addEventListener("click", function () {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("show");
+    });
+});
+</script>
+</html>
